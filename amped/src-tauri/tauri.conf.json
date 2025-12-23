@@ -1,0 +1,75 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Amped",
+  "version": "0.1.0",
+  "identifier": "com.microsoft.amped",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:3000",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../out"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "Amped",
+        "width": 1400,
+        "height": 900,
+        "minWidth": 900,
+        "minHeight": 600,
+        "resizable": true,
+        "fullscreen": false,
+        "decorations": true,
+        "transparent": false,
+        "titleBarStyle": "Overlay",
+        "hiddenTitle": true
+      }
+    ],
+    "security": {
+      "csp": null
+    },
+    "macOSPrivateApi": true
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "category": "DeveloperTool",
+    "shortDescription": "AI-powered development assistant",
+    "longDescription": "Amped is a modern desktop application that wraps Amplifier CLI with a beautiful GUI. Features include chat interface, code editor, session management, and MCP tracking.",
+    "macOS": {
+      "minimumSystemVersion": "10.15",
+      "signingIdentity": null,
+      "entitlements": null
+    }
+  },
+  "plugins": {
+    "shell": {
+      "open": true,
+      "scope": [
+        {
+          "name": "amplifier",
+          "cmd": "amplifier",
+          "args": true
+        },
+        {
+          "name": "uv",
+          "cmd": "uv",
+          "args": true
+        }
+      ]
+    },
+    "fs": {
+      "scope": ["$HOME/.amplifier/**", "$APPDATA/**", "$HOME/**"]
+    },
+    "dialog": {
+      "all": true
+    }
+  }
+}

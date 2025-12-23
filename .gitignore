@@ -68,3 +68,14 @@ next-steps.md
 
 # Working folders
 ai_working/tmp
+
+##############################
+# Amped desktop app ignores  #
+##############################
+
+# Tauri/Rust build artifacts
+amped/src-tauri/target/
+
+# Next.js build outputs
+amped/.next/
+amped/out/
