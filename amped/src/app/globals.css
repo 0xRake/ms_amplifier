@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.5rem;
+    
+    /* ZED-inspired colors */
+    --surface: 0 0% 98%;
+    --surface-hover: 0 0% 96%;
+    --surface-active: 0 0% 94%;
+    --sidebar: 240 4.8% 95.9%;
+    --sidebar-foreground: 240 5.9% 10%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    
+    /* ZED-inspired dark colors */
+    --surface: 240 6% 10%;
+    --surface-hover: 240 5% 14%;
+    --surface-active: 240 5% 18%;
+    --sidebar: 240 6% 8%;
+    --sidebar-foreground: 0 0% 98%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom scrollbar - ZED style */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/20 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-muted-foreground/30;
+}
+
+/* Title bar drag region for Tauri */
+.titlebar {
+  -webkit-app-region: drag;
+}
+
+.titlebar button,
+.titlebar a,
+.titlebar input {
+  -webkit-app-region: no-drag;
+}
+
+/* Code editor styling */
+.code-editor {
+  font-family: var(--font-geist-mono);
+  font-size: 13px;
+  line-height: 1.6;
+  tab-size: 2;
+}
+
+/* Markdown content styling */
+.prose pre {
+  @apply bg-muted rounded-lg p-4 overflow-x-auto;
+}
+
+.prose code {
+  @apply bg-muted px-1.5 py-0.5 rounded text-sm;
+}
+
+.prose pre code {
+  @apply bg-transparent p-0;
+}
+
+/* Animation for streaming text */
+@keyframes cursor-blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.streaming-cursor::after {
+  content: "▊";
+  animation: cursor-blink 1s infinite;
+  @apply text-primary ml-0.5;
+}
+
+/* Panel resize handle */
+.resize-handle {
+  @apply w-1 cursor-col-resize transition-colors;
+}
+
+.resize-handle:hover {
+  @apply bg-primary/20;
+}
+
+.resize-handle:active {
+  @apply bg-primary/40;
+}
